@@ -1,8 +1,8 @@
 spring:
   datasource:
-    password: ${DB_PASSWORD:jcst1997}
-    url: ${DB_URL:jdbc:mysql://localhost:3306/userservice}
-    username: ${DB_USERNAME:juansierra}
+    password: ${SPRING_DATASOURCE_PASSWORD:jcst1997}
+    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/userservice}
+    username: ${SPRING_DATASOURCE_USERNAME:juansierra}
   jpa:
     hibernate:
       ddl-auto: create
