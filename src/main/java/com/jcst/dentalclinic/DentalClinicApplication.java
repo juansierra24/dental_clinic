@@ -6,9 +6,9 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.jcst.dentalclinic"})
-public class SplitwiseApplication {
+public class DentalClinicApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SplitwiseApplication.class, args);
+		SpringApplication.run(DentalClinicApplication.class, args);
 	}
 }
