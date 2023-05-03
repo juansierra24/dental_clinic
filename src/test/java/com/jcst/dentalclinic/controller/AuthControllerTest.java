@@ -1,5 +1,6 @@
 package com.jcst.dentalclinic.controller;
 
+import com.jcst.dentalclinic.controllerAdvice.RestExceptionHandler;
 import com.jcst.dentalclinic.models.dto.AuthenticationRequest;
 import com.jcst.dentalclinic.models.dto.AuthenticationResponse;
 import com.jcst.dentalclinic.models.dto.RegisterRequest;
@@ -8,30 +9,27 @@ import com.google.gson.Gson;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
-import org.mockito.Mock;
 import static org.hamcrest.Matchers.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
-import javax.sql.DataSource;
-
-import java.sql.Connection;
 import java.util.ArrayList;
 
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@SpringJUnitConfig
-@SpringBootTest
-@AutoConfigureMockMvc
+@WebMvcTest
+@ContextConfiguration(classes = {AuthController.class, RestExceptionHandler.class})
+@AutoConfigureMockMvc(addFilters = false)
 @ExtendWith(SpringExtension.class)
 class AuthControllerTest{
 
@@ -39,10 +37,6 @@ class AuthControllerTest{
     private MockMvc mockMvc;
     @MockBean
     AuthService authService;
-    @Mock
-    DataSource mockDataSource;
-    @Mock
-    Connection mockConn;
     @InjectMocks
     AuthController authController;
     private Gson gson = new Gson();
