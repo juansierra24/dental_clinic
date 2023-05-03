@@ -1,8 +1,9 @@
 spring:
   datasource:
-    password: ${SPRING_DATASOURCE_PASSWORD:jcst1997}
+    password: ${SPRING_DATASOURCE_PASSWORD:password}
     url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/userservice}
-    username: ${SPRING_DATASOURCE_USERNAME:juansierra}
+    username: ${SPRING_DATASOURCE_USERNAME:username}
+    driver-class-name: com.mysql.cj.jdbc.Driver
   jpa:
     hibernate:
       ddl-auto: create
@@ -12,4 +13,4 @@ spring:
         dialect: org.hibernate.dialect.MySQL8Dialect
         format_sql: true
 server:
-  port: 8081
+  port: 8080
